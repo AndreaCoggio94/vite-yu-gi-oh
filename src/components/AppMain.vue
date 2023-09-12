@@ -6,7 +6,8 @@ export default {
   data() {
     return {
       cards: [],
-      search: "alien",
+      search: "",
+      filter: "&archetype=",
     };
   },
   components: {
@@ -19,12 +20,17 @@ export default {
     fetchCards() {
       axios
         .get(
-          "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0&archetype=" +
+          "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0" +
             this.search
         )
         .then((response) => {
           this.cards = response.data.data;
         });
+    },
+    filterSearch(event) {
+      this.search = this.filter + event.target.value;
+
+      this.fetchCards();
     },
   },
 };
@@ -33,7 +39,11 @@ export default {
 <template>
   <div class="container">
     <div class="input-group">
-      <select class="custom-select" id="select-type">
+      <select
+        class="custom-select"
+        @change="filterSearch($event)"
+        id="select-type"
+      >
         <option selected>Choose a type</option>
         <option value="Alien">Alien</option>
         <option value="Toon">Toon</option>
