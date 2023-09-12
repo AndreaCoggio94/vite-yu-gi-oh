@@ -1,4 +1,26 @@
-<script></script>
+<script>
+import AppCards from "./AppCards.vue";
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      cards: [],
+      search: "&archetype=alien",
+    };
+  },
+  components: {
+    AppCards,
+  },
+  created() {
+    axios
+      .get("https://db.ygoprodeck.com/api/v7/cardinfo.php?" + this.search)
+      .then((response) => {
+        this.cards = response.data;
+      });
+  },
+};
+</script>
 
 <template>
   <div class="container">
