@@ -14,8 +14,14 @@ export default {
 </script>
 
 <template>
-  <AppHeader />
-  <AppMain />
+  <div class="body">
+    <AppHeader />
+    <AppMain />
+  </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.body {
+  background-color: orange;
+}
+</style>

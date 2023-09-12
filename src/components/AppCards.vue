@@ -23,6 +23,9 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  //   width: 15%;
+  background-color: orange;
+  img {
+    max-width: 100%;
+  }
 }
 </style>

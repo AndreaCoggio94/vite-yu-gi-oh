@@ -4,7 +4,7 @@
   <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
       <img
-        src=""
+        src="https://e7.pngegg.com/pngimages/534/999/png-clipart-yu-gi-oh-power-of-chaos-yugi-the-destiny-yu-gi-oh-the-sacred-cards-yugi-mutou-bakura-yu-miscellaneous-game.png"
         width="30"
         height="30"
         class="d-inline-block align-top"

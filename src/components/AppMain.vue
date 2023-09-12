@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       cards: [],
-      search: "&archetype=alien",
+      search: "alien",
     };
   },
   components: {
@@ -19,7 +19,7 @@ export default {
     fetchCards() {
       axios
         .get(
-          "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0" +
+          "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0&archetype=" +
             this.search
         )
         .then((response) => {
@@ -35,9 +35,9 @@ export default {
     <div class="input-group">
       <select class="custom-select" id="select-type">
         <option selected>Choose a type</option>
-        <option value="&archetype=alien">One</option>
-        <option value="&archetype=elemental">Two</option>
-        <option value="3">Three</option>
+        <option value="Alien">Alien</option>
+        <option value="Toon">Toon</option>
+        <option value="War Rock">War Rock</option>
       </select>
     </div>
 
@@ -58,7 +58,9 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding: 1rem 0;
+  padding: 1rem;
+  margin: 2rem auto;
+  background-color: white;
 
   .card {
     margin: 1rem 0;
