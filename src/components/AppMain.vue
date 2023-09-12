@@ -8,6 +8,7 @@ export default {
       cards: [],
       search: "",
       filter: "&archetype=",
+      isLoading: "false",
     };
   },
   components: {
@@ -18,6 +19,7 @@ export default {
   },
   methods: {
     fetchCards() {
+      this.isLoading = "true";
       axios
         .get(
           "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0" +
@@ -26,6 +28,7 @@ export default {
         .then((response) => {
           this.cards = response.data.data;
         });
+      this.isLoading = "false";
     },
     filterSearch(event) {
       this.search = this.filter + event.target.value;
@@ -53,6 +56,9 @@ export default {
 
     <div class="card">
       <div class="card-counter">Found this amount {{ cards.length }}</div>
+      <div :class="!isLoading ? 'active' : 'hidden'">
+        <h1 class="text-centered">Loading</h1>
+      </div>
       <div class="card-container row-cols-2 row-cols-md-3 row-cols-lg-4">
         <AppCards
           v-for="card in cards"
@@ -74,6 +80,15 @@ export default {
 
   .card {
     margin: 1rem 0;
+
+    .active {
+      display: block;
+      background-color: red;
+    }
+
+    .hidden {
+      display: none;
+    }
     .card-counter {
       color: white;
       background-color: rgb(28, 26, 26);
