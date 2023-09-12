@@ -1,5 +1,28 @@
-<script></script>
+<script>
+export default {
+  data() {
+    return {};
+  },
+  props: {
+    archetype: String,
+    image: String,
+    name: String,
+  },
+};
+</script>
 
-<template></template>
+<template>
+  <div class="card col">
+    <img class="card-img-top" :src="image" :alt="name" />
+    <div class="card-body">
+      <h5 class="card-title">{{ name }}</h5>
+      <p class="card-text">{{ archetype }}</p>
+    </div>
+  </div>
+</template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card {
+  //   width: 15%;
+}
+</style>
