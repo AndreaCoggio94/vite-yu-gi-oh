@@ -16,7 +16,7 @@ export default {
   created() {},
   methods: {
     this() {
-      console.log("suca");
+      console.log("working");
     },
   },
 };

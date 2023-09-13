@@ -11,6 +11,7 @@ export default {
   methods: {},
 };
 </script>
+<!-- @change="$emit('cambio')" -->
 
 <template>
   <div class="input-group">
@@ -18,14 +19,14 @@ export default {
       class="custom-select"
       id="select-type"
       placeholder="this"
-      v-model="filterData"
-      @change="$emit('cambio')"
+      v-model="choosenFilter"
     >
       <option disabled value="">Choose an archetype</option>
       <option v-for="card in store.archetypes" :value="card.archetype_name">
         {{ card.archetype_name }}
       </option>
     </select>
+    <div class="btn btn-primary" @click="cambio">Filter</div>
   </div>
 </template>
 
