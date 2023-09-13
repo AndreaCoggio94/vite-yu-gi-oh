@@ -1,16 +1,17 @@
 <script>
 import AppCards from "./AppCards.vue";
 import { store } from "../data/store";
+import BaseSelect from "./BaseSelect.vue";
 
 export default {
   data() {
     return {
       store,
-      filterData: "Choose an archetype",
     };
   },
   components: {
     AppCards,
+    BaseSelect,
   },
   created() {},
   methods: {
@@ -24,15 +25,14 @@ export default {
 <!-- @change="filterSearch($event)" -->
 <template>
   <div class="container">
-    <div class="input-group">
+    <!-- <div class="input-group">
       <select class="custom-select" id="select-type" v-model="filterData">
         <option v-for="card in store.archetypes" :value="card.archetype_name">
           {{ card.archetype_name }}
         </option>
-        <option value="Toon">Toon</option>
-        <option value="War Rock">War Rock</option>
       </select>
-    </div>
+    </div> -->
+    <BaseSelect />
 
     <div class="card">
       <div class="card-counter">Found this amount {{ store.cards.length }}</div>
