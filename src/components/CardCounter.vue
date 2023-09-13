@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <div class="card-counter">Found this amount {{ store.cards.length }}</div>
+  <div class="card-counter">I found {{ store.cards.length }} cards</div>
 </template>
 
 <style lang="scss" scoped>
