@@ -19,7 +19,6 @@ export default {
   methods: {
     fetchCards(endpoint) {
       axios.get(endpoint).then((response) => {
-        console.log(response.data);
         const cardsData = response.data.data.map((card) => {
           const { id, archetype, name, card_images } = card;
           return { id, archetype, name, image: card_images[0].image_url };
@@ -28,10 +27,18 @@ export default {
         store.cards = cardsData;
       });
     },
-  },
+    fetchArchetypes(endpoint) {
+      axios.get(endpoint).then((response) => {
+        console.log(response.data);
+        const archetypesData = response.data;
 
+        store.archetypes = archetypesData;
+      });
+    },
+  },
   created() {
     this.fetchCards(store.startCardsLink);
+    this.fetchArchetypes(store.archetypesLink);
   },
 };
 </script>

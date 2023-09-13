@@ -1,69 +1,48 @@
 <script>
 import AppCards from "./AppCards.vue";
-import axios from "axios";
+import { store } from "../data/store";
 
 export default {
   data() {
     return {
-      cards: [],
-      search: "",
-      filter: "&archetype=",
-      isLoading: "false",
+      store,
+      filterData: "Choose an archetype",
     };
   },
   components: {
     AppCards,
   },
-  created() {
-    this.fetchCards();
-  },
+  created() {},
   methods: {
-    fetchCards() {
-      axios
-        .get(
-          "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0" +
-            this.search
-        )
-        .then((response) => {
-          this.cards = response.data.data;
-        });
-      this.isLoading = "false";
-    },
     filterSearch(event) {
       this.search = this.filter + event.target.value;
-
-      this.fetchCards();
     },
   },
 };
 </script>
 
+<!-- @change="filterSearch($event)" -->
 <template>
   <div class="container">
     <div class="input-group">
-      <select
-        class="custom-select"
-        @change="filterSearch($event)"
-        id="select-type"
-      >
-        <option selected>Choose a type</option>
-        <option value="Alien">Alien</option>
+      <select class="custom-select" id="select-type" v-model="filterData">
+        <option v-for="card in store.archetypes" :value="card.archetype_name">
+          {{ card.archetype_name }}
+        </option>
         <option value="Toon">Toon</option>
         <option value="War Rock">War Rock</option>
       </select>
     </div>
 
     <div class="card">
-      <div class="card-counter">Found this amount {{ cards.length }}</div>
-      <div :class="!isLoading ? 'active' : 'hidden'">
-        <h1 class="text-centered">Loading</h1>
-      </div>
+      <div class="card-counter">Found this amount {{ store.cards.length }}</div>
+
       <div class="card-container row-cols-2 row-cols-md-3 row-cols-lg-4">
         <AppCards
-          v-for="card in cards"
+          v-for="card in store.cards"
           :key="card.id"
           :archetype="card.archetype"
-          :image="card.card_images[0].image_url"
+          :image="card.image"
           :name="card.name"
         />
       </div>
