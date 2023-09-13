@@ -17,8 +17,8 @@ export default {
   },
   created() {},
   methods: {
-    newFilter(value) {
-      this.$emit("change", value);
+    newFilter() {
+      this.$emit("change");
     },
     fetchArchetypes(endpoint) {
       axios.get(endpoint).then((response) => {

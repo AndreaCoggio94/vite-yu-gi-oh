@@ -9,4 +9,5 @@ export const store = reactive({
   cards: [],
   archetypes: [],
   choosenFilter: "",
+  filterData: "",
 });

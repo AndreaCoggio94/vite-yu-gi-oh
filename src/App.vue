@@ -17,8 +17,8 @@ export default {
   },
 
   methods: {
-    filterArchetype(value) {
-      this.store.choosenFilter = value;
+    filterArchetype() {
+      this.store.choosenFilter = store.filterData;
       const newLink =
         this.store.searchCardsLink +
         this.store.archetypesFilter +
