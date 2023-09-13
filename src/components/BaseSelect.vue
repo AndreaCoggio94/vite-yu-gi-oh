@@ -26,7 +26,7 @@ export default {
         {{ card.archetype_name }}
       </option>
     </select>
-    <div class="btn btn-primary" @click="cambio">Filter</div>
+    <div class="btn btn-primary" @click="$emit('cambio')">Filter</div>
   </div>
 </template>
 
