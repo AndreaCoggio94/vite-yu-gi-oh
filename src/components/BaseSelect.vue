@@ -19,7 +19,7 @@ export default {
       class="custom-select"
       id="select-type"
       placeholder="this"
-      v-model="choosenFilter"
+      v-model="filterData"
     >
       <option disabled value="">Choose an archetype</option>
       <option v-for="card in store.archetypes" :value="card.archetype_name">
