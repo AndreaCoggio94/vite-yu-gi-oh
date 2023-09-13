@@ -15,8 +15,8 @@ export default {
   },
   created() {},
   methods: {
-    filterSearch(event) {
-      this.search = this.filter + event.target.value;
+    this() {
+      console.log("suca");
     },
   },
 };
@@ -32,7 +32,7 @@ export default {
         </option>
       </select>
     </div> -->
-    <BaseSelect />
+    <BaseSelect @cambio="this()" />
 
     <div class="card">
       <div class="card-counter">Found this amount {{ store.cards.length }}</div>
