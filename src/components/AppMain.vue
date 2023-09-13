@@ -2,6 +2,7 @@
 import AppCards from "./AppCards.vue";
 import { store } from "../data/store";
 import BaseSelect from "./BaseSelect.vue";
+import CardCounter from "./CardCounter.vue";
 
 export default {
   data() {
@@ -12,6 +13,7 @@ export default {
   components: {
     AppCards,
     BaseSelect,
+    CardCounter,
   },
   created() {},
   methods: {
@@ -35,7 +37,7 @@ export default {
     <BaseSelect @change="newFilter" />
 
     <div class="card">
-      <div class="card-counter">Found this amount {{ store.cards.length }}</div>
+      <CardCounter />
 
       <div class="card-container row-cols-2 row-cols-md-3 row-cols-lg-4">
         <AppCards
@@ -67,12 +69,7 @@ export default {
     .hidden {
       display: none;
     }
-    .card-counter {
-      color: white;
-      background-color: rgb(28, 26, 26);
-      text-align: center;
-      padding: 0.25rem;
-    }
+
     .card-container {
       display: flex;
       flex-wrap: wrap;

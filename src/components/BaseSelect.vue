@@ -11,7 +11,6 @@ export default {
   methods: {},
 };
 </script>
-<!-- @change="$emit('cambio')" -->
 
 <template>
   <div class="input-group">
