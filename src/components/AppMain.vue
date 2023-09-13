@@ -15,24 +15,24 @@ export default {
   },
   created() {},
   methods: {
-    this() {
-      console.log("working");
+    newFilter(value) {
+      this.$emit("change", value);
+    },
+    fetchArchetypes(endpoint) {
+      axios.get(endpoint).then((response) => {
+        console.log(response.data);
+        const archetypesData = response.data;
+
+        store.archetypes = archetypesData;
+      });
     },
   },
 };
 </script>
 
-<!-- @change="filterSearch($event)" -->
 <template>
   <div class="container">
-    <!-- <div class="input-group">
-      <select class="custom-select" id="select-type" v-model="filterData">
-        <option v-for="card in store.archetypes" :value="card.archetype_name">
-          {{ card.archetype_name }}
-        </option>
-      </select>
-    </div> -->
-    <BaseSelect @cambio="this()" />
+    <BaseSelect @change="newFilter" />
 
     <div class="card">
       <div class="card-counter">Found this amount {{ store.cards.length }}</div>

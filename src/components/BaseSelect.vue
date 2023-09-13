@@ -20,13 +20,13 @@ export default {
       id="select-type"
       placeholder="this"
       v-model="filterData"
+      @change="$emit('change', filterData)"
     >
       <option disabled value="">Choose an archetype</option>
       <option v-for="card in store.archetypes" :value="card.archetype_name">
         {{ card.archetype_name }}
       </option>
     </select>
-    <div class="btn btn-primary" @click="$emit('cambio')">Filter</div>
   </div>
 </template>
 

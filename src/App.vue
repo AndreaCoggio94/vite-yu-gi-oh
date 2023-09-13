@@ -17,6 +17,15 @@ export default {
   },
 
   methods: {
+    filterArchetype(value) {
+      this.store.choosenFilter = value;
+      const newLink =
+        this.store.searchCardsLink +
+        this.store.archetypesFilter +
+        this.store.choosenFilter;
+
+      this.fetchCards(newLink);
+    },
     fetchCards(endpoint) {
       axios.get(endpoint).then((response) => {
         const cardsData = response.data.data.map((card) => {
@@ -46,7 +55,7 @@ export default {
 <template>
   <div class="body">
     <AppHeader />
-    <AppMain />
+    <AppMain @change="filterArchetype" />
   </div>
 </template>
 
